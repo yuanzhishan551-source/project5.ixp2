@@ -1,0 +1,431 @@
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root {
+    --color-bggray: #DEDDDD;
+    --color-bggwhite: #EEEEEE;
+    --color-white: #FFFFFF;
+    --color-breadcrumb: #3366CC;
+    --width-marginhorizontal: 0.7rem;
+    --height-marginvertical: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    :root {
+        --width-marginhorizontal: 3rem;
+        --height-marginvertical: 2.6rem;
+    }
+}
+
+body.dark-mode {
+    --color-bgblue: #2F4E46;
+    --color-bggreem: #0E1206;
+    --color-green: #a8d5a2;
+    --color-font: #F3F3F3;
+    --color-highlight: #5A4647;
+}
+
+/* ─── BASE ELEMENTS ──────────────────────────────────── */
+body {
+    background: var(--color-bggwhite);
+    color: var(--color-font);
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.03) 0px,
+        rgba(0, 0, 0, 0.03) 12px,
+        transparent 9px,
+        transparent 24px
+    );
+}
+
+#mask-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9997;
+    background: #000;
+    -webkit-mask-mode: luminance;
+    mask-mode: luminance;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        transparent 100%
+    );
+    background-size: 100% 200px;
+    background-repeat: no-repeat;
+    animation: crt-band 6s linear infinite;
+}
+
+
+a {
+    text-decoration: none;
+    color: #000;
+    font-family: "EB Garamond";
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    padding: 20px 8px;
+    border-top: #000 solid 1px;
+}
+
+/* ─── NAV ────────────────────────────────────────────── */
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px 0;
+    background-color: var(--color-bggray);
+    margin-bottom: var(--width-marginhorizontal);
+
+    @media screen and (min-width: 850px) {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+    }
+}
+
+.nav_icon {
+    display: flex;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+
+.nav_breadcrumb {
+    display: none;
+}
+
+@media (min-width: 850px) {
+    .nav_breadcrumb {
+        display: flex;
+        align-items: center;
+        color: var(--color-breadcrumb);
+        font-family: "EB Garamond";
+        font-size: clamp(0.5rem, 3vw, 1.25rem);
+        font-weight: 400;
+        margin-left: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.nav_breadcrumb_current {
+    text-decoration: underline;
+}
+
+.nav_toggle {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    margin-left: auto;
+}
+
+.nav_toggle button {
+    font-family: "EB Garamond";
+    font-size: 1rem;
+    background: none;
+    border: 1px solid #000;
+    padding: 0.2rem 0.8rem;
+    cursor: pointer;
+}
+
+body.no-effects::before,
+body.no-effects::after {
+    display: none;
+}
+
+body.no-effects #mask-overlay {
+    display: none;
+}
+
+/* ─── INDEX: CARD GRID ───────────────────────────────── */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 40px;
+    margin: var(--width-marginhorizontal);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    container-type: inline-size;
+}
+
+.label {
+    align-self: flex-start;
+    font-family: "Edu AU VIC WA NT Hand";
+    font-size: clamp(10px, 3.8cqw, 14px);
+    font-weight: bold;
+    height: 2.2em;
+    padding: 0 2em 0 0.8em;
+    line-height: 1;
+    background: #000;
+    color: #fff;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    clip-path: polygon(0 0, calc(100% - 1.2em) 0, 100% 100%, 0 100%);
+    display: flex;
+    align-items: center;
+    margin-bottom: -1px;
+    position: relative;
+    z-index: 2;
+}
+
+.label p {
+    margin: 0;
+}
+
+.card .image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #000;
+    background: #000;
+}
+
+.card .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+}
+
+.card-title {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: #fff;
+    font-family: "Edu AU VIC WA NT Hand";
+    font-size: clamp(0.75rem, 3.2cqw, 1rem);
+    line-height: 1.25;
+    text-align: center;
+}
+
+.card:hover .card-title {
+    opacity: 0;
+}
+
+.card:hover .image img {
+    opacity: 1;
+}
+
+/* ─── ID CARD: TAB SYSTEM ────────────────────────────── */
+.tabs_wrapper {
+    font-family: "EB Garamond";
+    display: flex;
+    flex-direction: column;
+    margin: 0 var(--width-marginhorizontal);
+}
+
+@media (min-width: 850px) {
+    .tabs_wrapper {
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.tabs {
+    display: flex;
+    position: relative;
+    top: 2px;
+}
+
+.tab {
+    cursor: pointer;
+    position: relative;
+    margin-left: -1px;
+    z-index: 0;
+}
+
+.tab.active {
+    z-index: 2;
+}
+
+.tab.active p {
+    border-bottom-color: var(--color-white);
+}
+
+.tab p {
+    background-color: var(--color-white);
+    border: 1px solid #000;
+    padding: 1rem;
+    color: #000;
+    font-family: "Edu AU VIC WA NT Hand";
+    font-size: 0.8rem;
+}
+
+/* ─── ID CARD: CONTENT PANELS ────────────────────────── */
+.content_panels {
+    background-color: var(--color-white);
+    border: 1px solid #000;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content_panels p, .content_panels h2, .content_panels h1 {
+    margin: 0 var(--width-marginhorizontal);
+}
+
+.content-panel {
+    display: none;
+}
+
+.content-panel.active {
+    display: block;
+}
+
+/* ─── ID CARD: TYPOGRAPHY ────────────────────────────── */
+.subtitle {
+    font-family: "Edu AU VIC WA NT Hand";
+    font-size: 1rem;
+    margin-top: var(--height-marginvertical);
+}
+
+.title {
+    font-family: "Edu AU VIC WA NT Hand";
+    font-size: clamp(1.8rem, 7vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-top: var(--height-marginvertical);
+    margin-bottom: var(--height-marginvertical);
+}
+
+.title_2 {
+    font-family: "Edu AU VIC WA NT Hand";
+    font-size: clamp(2rem, 9vw, 4rem);
+    line-height: 1.15;
+    margin-top: var(--height-marginvertical);
+    margin-bottom: var(--height-marginvertical);
+}
+
+.section_title {
+    color: #000;
+    font-family: "Edu AU VIC WA NT Hand";
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    border-bottom: 1px solid #000;
+}
+
+/* ─── ID CARD: CONTENT BLOCKS ────────────────────────── */
+.details {
+    font-family: "Edu AU VIC WA NT Hand";
+    font-size: 1rem;
+    border-bottom: 1px solid #000;
+    margin-bottom: var(--width-marginhorizontal);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 0rem;
+    
+
+    @media (min-width: 600px) {
+        grid-template-columns: repeat(4, 1fr);
+        
+    }
+}
+
+.details p {
+    margin-bottom: var(--height-marginvertical);
+    
+}
+
+.observer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--width-marginhorizontal);
+    margin: 0 var(--width-marginhorizontal) var(--width-marginhorizontal);
+}
+
+.observer_signature {
+    font-family: "Edu AU VIC WA NT Hand";
+    margin-left: var(--width-marginhorizontal);
+    margin-bottom: var(--height-marginvertical);
+}
+
+.img_table_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--width-marginhorizontal);
+    align-items: start;
+    margin: 0 var(--width-marginhorizontal) var(--width-marginhorizontal);
+}
+
+.observation_table {
+    width: 100%;
+}
+
+.img_table_grid > .content_img:only-child {
+    max-width: 55%;
+}
+
+.content_img img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+}
+
+.content_img img.horizontal {
+    aspect-ratio: 4/3;
+}
+
+.content_img img.portrait {
+    aspect-ratio: 3/4;
+}
+
+@media (min-width: 768px) {
+    .content_img img {
+        aspect-ratio: 4/3;
+    }
+}
+
+.content_paragraph {
+    width: 100%;
+    font-family: "Azeret Mono";
+}
+
+.content_paragraph p {
+    margin-top: var(--height-marginvertical);
+    margin-bottom: var(--height-marginvertical);
+
+    @media screen and (min-width: 875px) {
+        max-width: 70%;
+    }
+}

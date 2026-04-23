@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="initial-scale=1.0,width=device-width" name="viewport">
+    <title>L.O.S.T — Milk Tea</title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono&family=Edu+AU+VIC+WA+NT+Hand:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="js/scripts.js"></script>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+</head>
+
+<body>
+
+    <div class="nav">
+        <div class="nav_icon">
+            <a href="index.html">L.O.S.T</a>
+        </div>
+    </div>
+
+    <div class="tabs_wrapper">
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab(0, this)"><p>Overview</p></div>
+            <div class="tab" onclick="switchTab(1, this)"><p>Day 1</p></div>
+            <div class="tab" onclick="switchTab(2, this)"><p>Day 2</p></div>
+            <div class="tab" onclick="switchTab(3, this)"><p>Day 3</p></div>
+        </div>
+
+        <div class="content_panels">
+
+            <!-- TAB 0: Overview -->
+            <div class="content-panel active">
+                <div class="subtitle">
+                    <h2>SPM-2026-0416-MT</h2>
+                </div>
+                <div class="title">
+                    <h1>THE CUP THAT REFUSED TO LEAVE.</h1>
+                </div>
+                <div class="details">
+                    <p>Observation period: 3 days</p>
+                    <p>Start Date: 2026.04.16</p>
+                    <p>End Date: 2026.04.18</p>
+                    <p>Record: 3 times</p>
+                </div>
+                <div class="img_table_grid">
+                    <div class="content_img">
+                        <img id="milktea-slideshow" src="images/MillkTea/Day1/1.jpg" alt="Milk tea cup with separated layers, found in print room, Building 1111">
+                    </div>
+                    <table class="observation_table">
+                        <thead>
+                            <tr><th>Zone</th><th>Element</th><th>Observation</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>Container</td>
+                                <td>Disposable sealed cup; standard takeaway format</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>Contents</td>
+                                <td>Layered beverage; milk base with apparent matcha component; third dark layer observed by Day 2</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>Disposition</td>
+                                <td>Removed by Day 3; likely by facilities staff</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="content_section">
+                    <div class="section_title">
+                        <h2>Conclusion</h2>
+                    </div>
+                    <div class="content_paragraph">
+                        <p>A forgotten milk tea cup, observed across three days as its contents separated and stratified. Its removal on Day 3 was most likely the work of the cleaning staff at Building 1111 — whose role, it should be noted, proves more consequential to the fate of lost objects than this study initially anticipated.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 1: Day 1 -->
+            <div class="content-panel">
+                <div class="subtitle">
+                    <h2>SPM-2026-0416-MT</h2>
+                </div>
+                <div class="title_2">
+                    <h1>DAY 1</h1>
+                </div>
+
+                <div class="content_section">
+                    <div class="section_title">
+                        <h2>Record</h2>
+                    </div>
+                    <div class="content_paragraph">
+                        <p>A takeaway milk tea cup was discovered on a desk in the print room, Room 304, Building 1111. The cup was unattended, seal intact. Its contents were already separated into two distinct layers: a pale lower layer of milk, and above it, a layer of what appeared to be matcha.</p>
+                    </div>
+                </div>
+                <div class="img_table_grid">
+                    <div class="content_img">
+                        <img src="images/MillkTea/Day1/1.jpg" alt="Milk tea cup showing two separated layers: milk and apparent matcha">
+                    </div>
+                </div>
+                <div class="content_section">
+                    <div class="content_paragraph">
+                        <p>The specimen was left in situ. The layering suggested the drink had been sitting untouched for some time before discovery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Day 2 -->
+            <div class="content-panel">
+                <div class="subtitle">
+                    <h2>SPM-2026-0416-MT</h2>
+                </div>
+                <div class="title_2">
+                    <h1>DAY 2</h1>
+                </div>
+
+                <div class="content_section">
+                    <div class="section_title">
+                        <h2>Record</h2>
+                    </div>
+                    <div class="content_paragraph">
+                        <p>The cup remained in position, undisturbed. A third layer had now formed at the top — a darker, denser band of what appeared to be milk that had continued to separate overnight. The stratification had progressed. The cup was documented and left in place.</p>
+                    </div>
+                </div>
+                <div class="img_table_grid">
+                    <div class="content_img">
+                        <img src="images/MillkTea/Day2/1.jpg" alt="Milk tea cup, third dark layer now visible on top">
+                    </div>
+                    <div class="content_img">
+                        <img src="images/MillkTea/Day2/2.jpg" alt="Milk tea cup, closer view of the three separated layers">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Day 3 -->
+            <div class="content-panel">
+                <div class="subtitle">
+                    <h2>SPM-2026-0416-MT</h2>
+                </div>
+                <div class="title_2">
+                    <h1>DAY 3</h1>
+                </div>
+
+                <div class="content_section">
+                    <div class="section_title">
+                        <h2>Final Record</h2>
+                    </div>
+                    <div class="content_paragraph">
+                        <p>The cup was gone. The desk was clear. No trace of the specimen remained.</p>
+                        <p>The most probable explanation is that it was removed by a member of the cleaning staff. The observation period is hereby concluded. The cleaning staff of Building 1111, it turns out, play a more decisive role in the fate of lost objects than this study had anticipated.</p>
+                    </div>
+                </div>
+                <div class="img_table_grid">
+                    <div class="content_img">
+                        <img src="images/MillkTea/Day3/1.png" alt="Empty desk where the milk tea cup had been">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
