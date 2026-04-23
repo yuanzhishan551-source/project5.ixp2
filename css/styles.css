@@ -424,8 +424,10 @@ body.no-effects #mask-overlay {
 .content_paragraph p {
     margin-top: var(--height-marginvertical);
     margin-bottom: var(--height-marginvertical);
+    font-size: 14px;
 
     @media screen and (min-width: 875px) {
         max-width: 70%;
+        font-size: 16px;
     }
 }
