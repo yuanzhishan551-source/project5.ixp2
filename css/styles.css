@@ -99,7 +99,7 @@ td {
     border-top: #000 solid 1px;
     font-family: "Azeret Mono";
     font-size: 12px;
-    line-height: 1.2;
+    line-height: 1.4;
 }
 
 /* ─── NAV ────────────────────────────────────────────── */
@@ -428,7 +428,7 @@ body.no-effects #mask-overlay {
     margin-top: var(--height-marginvertical);
     margin-bottom: var(--height-marginvertical);
     font-size: 12px;
-    line-height: 1.2;
+    line-height: 1.4;
 
     @media screen and (min-width: 875px) {
         max-width: 70%;
